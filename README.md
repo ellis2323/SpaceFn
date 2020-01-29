@@ -7,12 +7,10 @@
 |:---:|:---:|
 |Quick click `Space`|`Space`|
 |`Space`+`d`|`Del`|
-
 |`Space`+`i`|`Up Arrow`|
 |`Space`+`k`|`Down Arrow`|
 |`Space`+`j`|`Left Arrow`|
 |`Space`+`l`|`Right Arrow`|
-
 |`Space`+`u`|`Home`|
 |`Space`+`o`|`End`|
 |`Space`+`n`|`Page Up`|
