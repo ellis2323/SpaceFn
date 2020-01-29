@@ -1,4 +1,10 @@
-﻿;SpaceFn
+;Define CapsLock to Ctrl
+CapsLock::Ctrl	
+
+LShift & Esc::~
+RShift & Esc::~
+
+;SpaceFn
 #inputlevel,2
 $Space::
     SetMouseDelay -1
@@ -6,15 +12,19 @@ $Space::
     KeyWait, Space
     Send {Blind}{F24 up}
     ; MsgBox, %A_ThisHotkey%-%A_TimeSinceThisHotkey%
-    if(A_ThisHotkey="$Space" and A_TimeSinceThisHotkey<300)
+    if(A_ThisHotkey="$Space" and A_TimeSinceThisHotkey<400)
         Send {Blind}{Space DownR}
     return
 
 #inputlevel,1
+F24 & d::Del
+F24 & Esc::`
+
 F24 & i::Up
 F24 & k::Down
 F24 & j::Left
 F24 & l::Right
+
 F24 & u::Home
 F24 & o::End
 F24 & n::PgUp
@@ -32,8 +42,6 @@ F24 & 9::F9
 F24 & 0::F10
 F24 & -::F11
 F24 & =::F12
-
-F24 & Enter::^Enter
 
 ;Ctrl+S 重加载
 ; ~^s::
