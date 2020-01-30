@@ -1,5 +1,6 @@
 ;Define CapsLock to Ctrl
-CapsLock::Ctrl	
+CapsLock::Ctrl
+LCtRL::CapsLock	
 
 LShift & Esc::~
 RShift & Esc::~
@@ -8,13 +9,24 @@ RShift & Esc::~
 #inputlevel,2
 $Space::
     SetMouseDelay -1
+    KeyWait, Space, T0.150
+    ; detect short space keypress -> space
+    if (A_ThisHotkey="$Space" && A_TimeSinceThisHotkey<150) {
+    	Send {Blind}{Space DownR}
+    	return
+    }
+    ; mode F24
     Send {Blind}{F24 DownR}
     KeyWait, Space
-    Send {Blind}{F24 up}
-    ; MsgBox, %A_ThisHotkey%-%A_TimeSinceThisHotkey%
-    if(A_ThisHotkey="$Space" and A_TimeSinceThisHotkey<400)
+    if (A_ThisHotkey="$Space") { ; && A_TimeSinceThisHotkey<150
+        ;MsgBox, %A_PriorKey%---%A_ThisHotkey%-%A_TimeSinceThisHotkey%
         Send {Blind}{Space DownR}
+        Send {Blind}{F24 up}
+        return    
+    }
+    Send {Blind}{F24 up}
     return
+
 
 #inputlevel,1
 F24 & d::Del
@@ -25,10 +37,13 @@ F24 & k::Down
 F24 & j::Left
 F24 & l::Right
 
-F24 & u::Home
-F24 & o::End
-F24 & n::PgUp
-F24 & m::PgDn
+F24 & u::PgUp
+F24 & o::PgDn
+
+F24 & a::Home
+F24 & e::End
+
+F24 & p::Printscreen
 
 F24 & 1::F1
 F24 & 2::F2
